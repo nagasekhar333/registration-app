@@ -21,7 +21,7 @@ pipeline {
          }
          stage('Checkout from Git') {
             steps {
-                git branch: 'main', url: 'https://ashfaque-9x@bitbucket.org/vtechbox/registration-app.git'
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/nagasekhar333/registration-app.git'
             }
          }
          stage ('Build Package')  {
@@ -51,7 +51,7 @@ pipeline {
             steps {
                 rtServer (
                     id: "jfrog-server",
-                    url: "http://13.201.137.77:8082/artifactory",
+                    url: "http://13.126.235.162:8082/artifactory",
                     credentialsId: "jfrog"
                 )
 
@@ -143,7 +143,7 @@ pipeline {
             body: "Project: ${env.JOB_NAME}<br/>" +
                 "Build Number: ${env.BUILD_NUMBER}<br/>" +
                 "URL: ${env.BUILD_URL}<br/>",
-            to: 'mandurinagasekhar123@gmail.com',                              
+            to: 'nagasekharmanduri0@gmail.com',                              
             attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
       }
     }
